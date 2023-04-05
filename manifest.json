@@ -1,0 +1,34 @@
+{
+  "name": "CrashExtension",
+  "description": "Enable to test the impact of extension on webperformance",
+  "version": "1.2",
+  "permissions": [
+    "tabs",
+    "storage",
+    "scripting"
+  ],
+  "optional_permissions": [
+  ],
+  "host_permissions": [
+    "http://www.cdiscount.com/",
+    "*://*/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'",
+    "sandbox": "sandbox allow-scripts; script-src 'self' 'https://reqres.in/' 'https://apis.google.com/' 'https://www.gstatic.com/' 'https://*.firebaseio.com' 'https://www.googleapis.com' 'https://ajax.googleapis.com'; object-src 'self'"
+  },
+  "action": {
+    "default_icon": "logo-cds-adsfake-16.png",
+    "default_title": "CrashExtension",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "logo-cds-adsfake-16.png",
+    "32": "logo-cds-adsfake-32.png",
+    "128": "logo-cds-adsfake-128.png"
+  },
+  "manifest_version": 3
+}
