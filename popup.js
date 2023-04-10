@@ -25,3 +25,27 @@ function setRememberImage() {
     chrome.storage.sync.set(payload);
 }
 
+let chboxActiveFixedBanner = document.getElementById('activateFixedBanner');
+chboxActiveFixedBanner.onclick = setRememberFixedBanner;
+chrome.storage.sync.get(['activateFixedBanner'], function(obj) {
+    chboxActiveFixedBanner.checked = obj.activateFixedBanner
+});
+function setRememberFixedBanner() {
+    const payload = {
+        activateFixedBanner: chboxActiveFixedBanner.checked ? true: false
+      }
+    chrome.storage.sync.set(payload);
+}
+
+let chboxActiveFloatingBanner = document.getElementById('activateFloatingdBanner');
+chboxActiveFloatingBanner.onclick = setRememberFloatingBanner;
+chrome.storage.sync.get(['activateFloatingBanner'], function(obj) {
+    chboxActiveFloatingBanner.checked = obj.activateFloatingBanner
+});
+function setRememberFloatingBanner() {
+    const payload = {
+        activateFloatingBanner: chboxActiveFloatingBanner.checked ? true: false
+      }
+    chrome.storage.sync.set(payload);
+}
+

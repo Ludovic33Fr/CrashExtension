@@ -7,6 +7,8 @@ chrome.tabs.onUpdated.addListener ((tabId, changeInfo, tab) => {
   ) {
 
     InjectBanner(tabId);
+    InjectFixedBanner(tabId);
+    InjectFloatingBanner(tabId);
     InjectImage(tabId)
 
   }
@@ -20,6 +22,30 @@ function InjectBanner(tabId) {
           {
             target: {tabId: tabId},
             files: ['InjectBannerTop.js'],
+          },null);
+    }
+  });
+}
+
+function InjectFixedBanner(tabId) {
+  chrome.storage.sync.get (['activateFixedBanner'], function (obj) {
+    if (obj.activateFixedBanner == true) {
+      chrome.scripting.executeScript(
+          {
+            target: {tabId: tabId},
+            files: ['InjectBannerTopFixed.js'],
+          },null);
+    }
+  });
+}
+
+function InjectFloatingBanner(tabId) {
+  chrome.storage.sync.get (['activateFloatingBanner'], function (obj) {
+    if (obj.activateFloatingBanner == true) {
+      chrome.scripting.executeScript(
+          {
+            target: {tabId: tabId},
+            files: ['InjectBannerFloating.js'],
           },null);
     }
   });
